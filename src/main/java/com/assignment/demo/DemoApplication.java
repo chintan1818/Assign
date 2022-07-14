@@ -8,6 +8,7 @@ import org.springframework.context.annotation.ComponentScan;
 @SpringBootApplication
 @ComponentScan({"com.assignment.*"})
 @EntityScan("com.assignment.*")
+
 public class DemoApplication {
 
 	public static void main(String[] args) {

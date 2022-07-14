@@ -8,11 +8,28 @@ import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
 
+@Component
+@Entity
+@Table(name="categoryclass")
 public class CategoryCodeClass {
 
+    @Id
     private int CategoryCode;
+
+    private int value;
+
+    public int getValue() {
+        return value;
+    }
+
+    public void setValue(int value) {
+        this.value = value;
+    }
 
     public int getCategoryCode() {
         return CategoryCode;
