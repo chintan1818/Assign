@@ -2,39 +2,31 @@ package com.assignment.demo.controller;
 
 import com.assignment.demo.model.CategoryCodeClass;
 import com.assignment.demo.model.OldNew;
-import com.assignment.demo.model.Pair;
-import com.assignment.demo.repo.CategoryCode;
+import com.assignment.demo.service.CategoryCodeClassServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.*;
 
 @RestController
 @RequestMapping("/FetchNextNumber")
 @CrossOrigin("*")
 public class TestController {
 
-    CategoryCodeClass categoryCodeClass=new CategoryCodeClass();
-
-
-    Pair pair=new Pair(1,10);
-
-    @Autowired
-    CategoryCode categoryCode;
-
     @Autowired
     OldNew oldNew;
+
+
+    @Autowired
+    CategoryCodeClassServiceImpl categoryCodeClassService;
 
 
     @PostMapping("/")
     public ResponseEntity<?> createUser(@RequestBody CategoryCodeClass input) throws Exception {
 
 
-        input.getCategoryCode();
+        int code =input.getCategoryCode();
 
-        CategoryCodeClass cat = (CategoryCodeClass) categoryCode.findById(input.getCategoryCode()).get();
-        int value=cat.getValue();
+        int value = categoryCodeClassService.codeByValue(code);
 
         OldNew oldNew1=oldNew;
         oldNew1.setOldValue(value);

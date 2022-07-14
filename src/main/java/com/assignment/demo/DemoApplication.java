@@ -6,10 +6,11 @@ import org.springframework.boot.autoconfigure.domain.EntityScan;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
-@SpringBootApplication
-@ComponentScan({"com.assignment.*"})
+@SpringBootApplication(scanBasePackages={
+		"com.assignment.demo.*", "ccom.assignment.demo.repo.*"})
+@ComponentScan({"com.assignment.demo.*,com.assignment.demo.repo.*"})
 @EntityScan("com.assignment.*")
-@EnableJpaRepositories("com.assignment.*")
+
 
 public class DemoApplication {
 
