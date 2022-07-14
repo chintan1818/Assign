@@ -1,0 +1,17 @@
+# Assignmennt
+
+After starting application post method
+http://localhost:8080/FetchNextNumber/
+
+with object 
+
+{
+    "categoryCode": 1
+}
+
+
+code value can be 1, 2, or 3 as i have stored it in my My sql data baser
+
+To run in your computer, have to add database "assi" and add some row(categoryclass,value) in "categoryclass" named class
+
+class in the database will be created autometic but have to add values(row) because you have mentioned you have to assume database

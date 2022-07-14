@@ -1,0 +1,6 @@
+# Assignmennt
+
+I have used hiberbate for ORM and mysql for store table
+
+created models, service class and repositories using standard method MVC architecture
+
