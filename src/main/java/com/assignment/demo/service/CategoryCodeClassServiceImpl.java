@@ -13,10 +13,21 @@ public class CategoryCodeClassServiceImpl implements CategoryCodeClassService {
     public int codeByValue(int code)
     {
 
-        com.assignment.demo.model.CategoryCodeClass cat = (com.assignment.demo.model.CategoryCodeClass) categoryCodeClassRepository.findById(code).get();
-        int value=cat.getValue();
+            try {
+                com.assignment.demo.model.CategoryCodeClass cat = (com.assignment.demo.model.CategoryCodeClass) categoryCodeClassRepository.findById(code).get();
+                int value=cat.getValue();
+                return  value;
 
-        return  value;
+
+            }
+            catch (Exception e)
+            {
+                System.out.println("CategoryCode not found in the database");
+            }
+
+
+            return -1;
+
     }
 
     @Override
