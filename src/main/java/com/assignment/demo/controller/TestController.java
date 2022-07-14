@@ -43,7 +43,7 @@ public class TestController {
                     System.out.println("number :" + value +" ans is"+ans );
 
                     categoryCodeClassService.setValueByCode(code,ans);
-                    oldNew1.setNewValue(ans);
+
 
 
                 } catch (InterruptedException e) {
@@ -53,7 +53,7 @@ public class TestController {
             }
         };
 
-
+        oldNew1.setNewValue(ans);
         thread.start();
 
 
