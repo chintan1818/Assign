@@ -32,9 +32,32 @@ public class TestController {
         oldNew1.setOldValue(value);
 
         int ans=value+10-sumOfIndividualDigit(value);
-        System.out.println("number :" + value +" ans is"+ans );
 
-        oldNew1.setNewValue(ans);
+
+        Thread thread = new Thread("New Thread") {
+
+
+            public void run(){
+                try {
+                    Thread.sleep(5000);
+                    System.out.println("number :" + value +" ans is"+ans );
+
+                    categoryCodeClassService.setValueByCode(code,ans);
+                    oldNew1.setNewValue(ans);
+
+
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+                System.out.println("run by: " + getName());
+            }
+        };
+
+
+        thread.start();
+
+
+
 
         return ResponseEntity.ok(oldNew1);
 

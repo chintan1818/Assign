@@ -18,4 +18,12 @@ public class CategoryCodeClassServiceImpl implements CategoryCodeClassService {
 
         return  value;
     }
+
+    @Override
+    public void setValueByCode(int code, int value) {
+        com.assignment.demo.model.CategoryCodeClass cat = (com.assignment.demo.model.CategoryCodeClass) categoryCodeClassRepository.findById(code).get();
+        cat.setValue(value);
+         categoryCodeClassRepository.save(cat);
+
+    }
 }
