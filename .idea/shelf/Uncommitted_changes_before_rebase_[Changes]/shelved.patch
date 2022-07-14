@@ -1,0 +1,22 @@
+Index: src/main/java/com/assignment/demo/controller/TestController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package com.assignment.demo.controller;\r\n\r\nimport com.assignment.demo.model.CategoryCodeClass;\r\nimport com.assignment.demo.model.OldNew;\r\nimport com.assignment.demo.service.CategoryCodeClassServiceImpl;\r\nimport org.springframework.beans.factory.annotation.Autowired;\r\nimport org.springframework.http.ResponseEntity;\r\nimport org.springframework.web.bind.annotation.*;\r\n\r\n@RestController\r\n@RequestMapping(\"/FetchNextNumber\")\r\n@CrossOrigin(\"*\")\r\npublic class TestController {\r\n\r\n    @Autowired\r\n    OldNew oldNew;\r\n\r\n\r\n    @Autowired\r\n    CategoryCodeClassServiceImpl categoryCodeClassService;\r\n\r\n\r\n    @PostMapping(\"/\")\r\n    public ResponseEntity<?> createUser(@RequestBody CategoryCodeClass input) throws Exception {\r\n\r\n\r\n        int code =input.getCategoryCode();\r\n\r\n        int value = categoryCodeClassService.codeByValue(code);\r\n\r\n        if(value==-1)\r\n        {\r\n           return ResponseEntity.ok(0 + \"entry not found in the table have to add first categorycode in the table\");\r\n        }\r\n\r\n        OldNew oldNew1=oldNew;\r\n        oldNew1.setOldValue(value);\r\n\r\n        int ans=value+10-sumOfIndividualDigit(value);\r\n\r\n\r\n        Thread thread = new Thread(\"New Thread\") {\r\n\r\n\r\n            public void run(){\r\n                try {\r\n                    Thread.sleep(5000);\r\n                    System.out.println(\"number :\" + value +\" ans is:\"+ans );\r\n\r\n                    categoryCodeClassService.setValueByCode(code,ans);\r\n\r\n\r\n\r\n                } catch (InterruptedException e) {\r\n                    throw new RuntimeException(e);\r\n                }\r\n                System.out.println(\"run by: \" + getName());\r\n            }\r\n        };\r\n\r\n        oldNew1.setNewValue(ans);\r\n        thread.start();\r\n\r\n\r\n\r\n\r\n        return ResponseEntity.ok(oldNew1);\r\n\r\n\r\n\r\n    }\r\n\r\n\r\n    static int sumOfIndividualDigit(int n) {\r\n        int sum = 0;\r\n\r\n        while (n > 0 || sum > 9) {\r\n            if (n == 0) {\r\n                n = sum;\r\n                sum = 0;\r\n            }\r\n            sum = sum + n % 10;\r\n            n = n / 10;\r\n        }\r\n        return sum;\r\n    }\r\n}\r\n\r\n\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/com/assignment/demo/controller/TestController.java b/src/main/java/com/assignment/demo/controller/TestController.java
+--- a/src/main/java/com/assignment/demo/controller/TestController.java	(revision e138c5b7a09e5287e608a748540ef586887b80f1)
++++ b/src/main/java/com/assignment/demo/controller/TestController.java	(date 1657784560379)
+@@ -28,11 +28,6 @@
+ 
+         int value = categoryCodeClassService.codeByValue(code);
+ 
+-        if(value==-1)
+-        {
+-           return ResponseEntity.ok(0 + "entry not found in the table have to add first categorycode in the table");
+-        }
+-
+         OldNew oldNew1=oldNew;
+         oldNew1.setOldValue(value);
+ 
