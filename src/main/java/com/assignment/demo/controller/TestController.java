@@ -28,6 +28,11 @@ public class TestController {
 
         int value = categoryCodeClassService.codeByValue(code);
 
+        if(value==-1)
+        {
+            return ResponseEntity.ok(0 + "category code is not found in the database");
+        }
+
         OldNew oldNew1=oldNew;
         oldNew1.setOldValue(value);
 
